@@ -81,3 +81,7 @@ grid 의 fr단위 - flex와 비슷한 개념, 개수에 따라서 비율맞춰 �
 
 <3-5>
 position absolute를 줄때는 부모 태그에 position static이 아닌 친구를 둬서 기준을 잡아야 한다.
+
+<3-7>
+css 적용 우선순위 : id>>>class>속성>일반태그 (예외 : important)
+margin auto : 컨텐츠가 존재하지 않는 나머지는 margin으로 설정
