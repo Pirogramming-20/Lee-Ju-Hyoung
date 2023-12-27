@@ -522,7 +522,7 @@
         </nav>
         <style>
           #main {
-            margin-top: 62px;
+            margin-top: 50px;
             display: flex;
           }
           #main-left {
@@ -558,8 +558,62 @@
           #main-login {
             height: 164px;
             padding: 21px 20px 18px;
+            font-size: 1.4rem;
+            display: flex;
+            flex-flow: column;
           }
-          #main-login #main-right-ad {
+          #main-login > div:first-of-type {
+            line-height: 20px;
+          }
+          #main-login-button {
+            margin-top: 13px;
+            padding: 17px 0;
+            height: 56px;
+            background-color: #03c75a;
+            color: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+            text-decoration: none;
+          }
+          #main-login-button i {
+            background-image: url(./sp_main.png);
+            background-size: 433px 412px;
+            background-position: -120px -166px;
+            background-repeat: no-repeat;
+            width: 72px;
+            height: 14px;
+            display: inline-block;
+            margin: 3px 8px 0 0;
+            vertical-align: -1px;
+          }
+
+          #main-login > div:last-of-type {
+            font-size: 1.3rem;
+            margin-top: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #main-login > div:last-of-type a {
+            text-decoration: none;
+            color: var(--color_caption2);
+            letter-spacing: -0.4px;
+          }
+          #main-login > div:last-of-type a:hover {
+            text-decoration: underline;
+          }
+          #main-login > div:last-of-type > a:nth-of-type(2)::before,
+          #main-login > div:last-of-type > a:nth-of-type(2)::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            margin: 4px 12px 0;
+            vertical-align: -4px;
+          }
+          #main-right-ad {
             height: 240px;
           }
           #main-weather,
@@ -586,7 +640,7 @@
           <div id="main-right">
             <section id="main-login">
               <div>네이버를 더 안전하고 편리하게 이용하세요</div>
-              <a href=""><i />로그인</a>
+              <a href="" id="main-login-button"><i></i>로그인</a>
               <div>
                 <a href="#">아이디 찾기</a>
                 <a href="#">비밀번호 찾기</a>
