@@ -636,7 +636,7 @@
           #main-newstand-top,
           #main-shopping-top {
             flex: 1;
-            padding: 18px 20px;
+            padding: 18px 20px 0;
           }
           #main-newstand-top .dot::before {
             content: "";
@@ -934,16 +934,61 @@
             padding: 10px 0;
           }
           #main-shopping-grid {
+            margin-top: 18px;
             display: grid;
             grid-template-rows: 90px 95px 185px;
             grid-template-columns: 1fr 1fr 1fr 1fr 250px;
-            column-gap: 20px;
+            column-gap: 10px;
+          }
+          #main-shopping-grid .item {
+            font-size: 1.3rem;
+            line-height: 19px;
+            letter-spacing: -0.4px;
+            white-space: nowrap;
+          }
+          #main-shopping-grid .item > .image {
+            width: 125px;
+            height: 126px;
+            border-radius: 4px;
+            background-color: gray;
+            margin-bottom: 10px;
+          }
+          #main-shopping-grid .item > .text {
+            text-align: left;
           }
           .item:nth-child(1),
           .item:nth-child(2),
           .item:nth-child(3),
           .item:nth-child(4) {
             grid-row: 1 / span 2;
+          }
+          .item:nth-child(5),
+          .item:nth-child(6),
+          .item:nth-child(11) > div:first-child {
+            padding: 9px 12px 4px;
+            border-radius: 4px;
+            background: rgba(245, 248, 251, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+          }
+          .item:nth-child(6) {
+            margin-top: 11px;
+            margin-bottom: 11px;
+          }
+          .item:nth-child(11) > div:first-child {
+            height: 135px;
+            margin-bottom: 10px;
+          }
+          #main-shopping-animation::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 3px;
+            height: 3px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            border-radius: 50%;
           }
         </style>
         <main id="main">
@@ -1028,7 +1073,7 @@
                 <div id="main-shopping-gray">
                   <div class="left">
                     <a href="#">오늘의 혜택</a>
-                    <div id="main-newstand-animation">
+                    <div id="main-shopping-animation">
                       <a href="#"
                         >가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</a
                       >
@@ -1046,17 +1091,44 @@
                   </div>
                 </div>
                 <div id="main-shopping-grid">
-                  <div class="item">1</div>
-                  <div class="item">2</div>
-                  <div class="item">3</div>
-                  <div class="item">4</div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
                   <div class="item">5</div>
                   <div class="item">6</div>
-                  <div class="item">7</div>
-                  <div class="item">8</div>
-                  <div class="item">9</div>
-                  <div class="item">10</div>
-                  <div class="item">11</div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div class="image"></div>
+                    <div class="text">광고 텍스트</div>
+                  </div>
+                  <div class="item">
+                    <div></div>
+                    <div>아울렛 쇼핑 특템찬스! 시즌오프SALE</div>
+                  </div>
                 </div>
               </div>
               <footer>
