@@ -807,6 +807,19 @@
           #main-newstand footer {
             padding: 10px 0 11px;
             border-top: 1px solid var(--color_border_in);
+            box-sizing: border-box;
+            font-size: 1.3rem;
+            line-height: 35px;
+            font-weight: 600;
+            vertical-align: top;
+            color: #606060;
+            color: var(--color_caption2);
+            display: flex;
+            justify-content: center;
+          }
+          #main-newstand footer .news {
+            color: #3a67ea;
+            color: var(--color_news);
           }
         </style>
         <main id="main">
@@ -865,7 +878,7 @@
               </div>
               <footer>
                 <button><span class="blind">이전</span></button>
-                <div>언론사 더보기1페이지 전체/4</div>
+                <div><span class="news">언론사</span>더보기1페이지 전체/4</div>
                 <button><span class="blind">다음</span></button>
                 <button><span class="blind">목록보기</span></button>
                 <button><span class="blind">격자보기</span></button>
