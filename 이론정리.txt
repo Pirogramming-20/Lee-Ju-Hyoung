@@ -85,3 +85,6 @@ position absolute를 줄때는 부모 태그에 position static이 아닌 친구
 <3-7>
 css 적용 우선순위 : id>>>class>속성>일반태그 (예외 : important)
 margin auto : 컨텐츠가 존재하지 않는 나머지는 margin으로 설정
+
+<3-8>
+grid 응용 : 꼭 칸이 맞지 않아도 칸 병합 느낌으로 응용 할 수 있음.
