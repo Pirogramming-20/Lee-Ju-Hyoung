@@ -1,0 +1,25 @@
+.center {
+  text-align: center;
+}
+
+.title {
+  display: inline-block;
+  background-color: transparent;
+  padding-bottom: 5px;
+  font-size: 24px;
+}
+
+#parent {
+  display: grid;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.card {
+  width: 360px;
+  height: 158px;
+  background-color: var(--bg-gray);
+  border-radius: 10px;
+  padding: var(--gutter);
+  cursor: pointer;
+  position: relative;
+}
