@@ -1,11 +1,14 @@
 * {
   box-sizing: border-box;
 }
-.center {
+#interview {
+  padding: 90px var(--offset) 50px;
   text-align: center;
-  width: min(100%, 1200px);
+}
+.max-width {
+  width: min(1200px, 100%);
+  padding: 0 40px;
   margin: auto;
-  padding: 0 50px;
 }
 
 .title {
