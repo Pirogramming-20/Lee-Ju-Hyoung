@@ -1,0 +1,22 @@
+@media screen and (max-width: 800px) {
+  .sidebar {
+    z-index: 50;
+    width: 290px;
+    height: calc(100vh - var(--header-height));
+    background-color: #333;
+    position: fixed;
+    right: 0;
+    top: var(--header-height);
+    right: -300px;
+    transition: 0.3s;
+  }
+  #hamburger-icon input:checked ~ .sidebar {
+    right: 0;
+  }
+
+  .sidebar li {
+    margin: 40px 50px;
+    font-size: 1.4rem;
+    text-align: right;
+  }
+}
