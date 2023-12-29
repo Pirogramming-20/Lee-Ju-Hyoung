@@ -7,19 +7,89 @@
   background-color: transparent;
   padding-bottom: 5px;
   font-size: 24px;
+  margin-bottom: 20px;
 }
 
 #parent {
   display: grid;
   gap: 10px;
-  flex-wrap: wrap;
 }
 .card {
   width: 360px;
-  height: 158px;
+  height: 145px;
   background-color: var(--bg-gray);
   border-radius: 10px;
   padding: var(--gutter);
   cursor: pointer;
   position: relative;
+}
+
+.more {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: var(--gutter);
+  top: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.more > div {
+  width: 100%;
+  height: 1.6px;
+  background-color: rgba(236, 236, 236, 0.466);
+  transition: 0.3s;
+}
+.card:hover .more > div:first-child {
+  width: 50%;
+}
+.card:hover .more > div:last-child {
+  width: 50%;
+  transform: translateX(100%);
+}
+.card:hover {
+  transform: translateY(-2px);
+}
+.card:hover .card-header-image {
+  transform: scale(1.05);
+}
+.card-header {
+  display: inline-block;
+  justify-content: flex;
+}
+.card-header-image {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transition: 0.3s;
+  margin-right: 15px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+}
+.card-header-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  text-align: left;
+}
+.card-header-name {
+  font-size: 1.2rem;
+}
+.card-header-major {
+  background-color: #35a67b;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+
+.card-message {
+  font-size: 1.1rem;
+  text-align: left;
+  padding: 10px 0;
+  margin-top: 10px;
 }
