@@ -82,6 +82,10 @@ body {
   overflow-y: scroll;
 }
 
+.items::-webkit-scrollbar {
+  width: 0;
+}
+
 .item {
   background-color: white;
   display: flex;
