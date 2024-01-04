@@ -15,7 +15,8 @@ while True:
             print('playerA :', count)
             count+=1
             if count > 31:
-                break
+                print('playerB win!')
+                exit()
     while flag==1: 
         getnumA = input("부를 숫자의 개수를 입력하세요(1, 2, 3만 입력가능) :")
         if not getnumA.isdigit():
@@ -23,9 +24,10 @@ while True:
         elif int(getnumA) > 3 or int(getnumA) < 0:
             print('1, 2, 3 중 하나를 입력하세요')
         else:
-            flag=1
+            flag=0
         for i in range(int(getnumA)):
             print('playerB :', count)
             count+=1
             if count > 31:
-                break
+                print('playerA win!')
+                exit()
