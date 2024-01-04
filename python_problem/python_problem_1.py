@@ -1,3 +1,4 @@
+import random
 num = 0
 count = 1
 flag = 0
@@ -15,19 +16,20 @@ def brGame(flag):
         return flag, int(num)
 
 while True:
-    while flag==0: 
-        flag, num = brGame(flag)
+    if flag==0: 
+        num = random.randint(1,3)
+        flag=1
         for i in range(int(num)):
-            print('playerA :', count)
+            print('computer', count)
             count+=1
             if count > 31:
-                print('playerB win!')
+                print('player win!')
                 exit()
-    while flag==1: 
+    elif flag==1: 
         flag, num = brGame(flag)
         for i in range(int(num)):
-            print('playerB :', count)
+            print('player', count)
             count+=1
             if count > 31:
-                print('playerA win!')
+                print('computer win!')
                 exit()
