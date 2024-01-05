@@ -35,6 +35,19 @@ body {
   justify-content: center;
 }
 
+button {
+  all: unset;
+  background-color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  width: 55px;
+  height: 55px;
+  border: none;
+  border-radius: var(--base-border);
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgb(91, 89, 89);
+}
 #title {
   display: flex;
   font-size: 1.5rem;
@@ -53,7 +66,7 @@ body {
   font-weight: 600;
   width: 50%;
   border-radius: var(--base-border);
-  box-shadow: 5px;
+  box-shadow: 5px 5px 10px rgb(91, 89, 89);
 }
 
 .clocknum {
@@ -73,24 +86,12 @@ body {
   margin: 10px 0 30px;
   gap: 20px;
 }
-
-.clockbtn button {
-  transition: background-color 0.3s ease-in-out;
-}
-
-.clockbtn button.clicked {
-  background-color: #4dff53;
-}
-
-button {
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  width: 55px;
-  height: 55px;
-  border: none;
-  border-radius: var(--base-border);
-  cursor: pointer;
+.clockbtn button:active {
+  margin-top: 1px;
+  margin-left: 1px;
+  box-shadow: none;
+  background-color: rgb(210, 206, 206);
+  color: white;
 }
 
 #record {
@@ -99,7 +100,7 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #4dff53;
+  background-color: rgb(221, 215, 215);
   margin-top: 30px;
   border-radius: var(--base-border);
 }
@@ -114,6 +115,10 @@ button {
   background-color: gray;
   border-radius: 10px 10px 0 0;
   box-sizing: border-box;
+}
+.recordheadertext {
+  font-family: "PilseungGothic";
+  color: white;
 }
 
 .recordbody {
@@ -130,20 +135,21 @@ button {
   padding: 10px 20px;
 }
 
+.removeicon {
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.removeicon:hover {
+  color: red;
+}
 .select-btn {
-  border: 3px solid black;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  color: black;
-
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  cursor: pointer;
 }
-
-.removeicon {
-  cursor: pointer;
+.select-btn > i {
+  font-size: 40px;
 }
