@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+      form,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      #wrap {
+        text-align: center;
+        min-height: 100%;
+        padding-bottom: 120px;
+        position: relative;
+        background-color: #2c3137;
+      }
+      #wrap-top {
+        width: 1300px;
+        height: 1000px;
+        display: inline-block;
+        color: white;
+      }
+      #header {
+        margin-top: 50px;
+      }
+      #header-left,
+      #header-right {
+        display: flex;
+      }
+      #header-left {
+        position: relative;
+        float: left;
+        line-height: 50px;
+      }
+      #header-right {
+        position: relative;
+        float: right;
+      }
+
+      #header .item {
+        margin-left: 20px;
+      }
+      #wrap-top {
+        position: relative;
+      }
+      #icon > img {
+        margin-left: 30px;
+        width: 50px;
+        height: 50px;
+      }
+      #header-right #text-div {
+        width: 200px;
+        height: 30px;
+        background-color: rgb(255, 255, 255, 0.3);
+        padding: 2px;
+        border-radius: 5px;
+      }
+      #header-right #text-style {
+        width: 150px;
+        border: none;
+        background-color: transparent;
+      }
+      input::-webkit-input-placeholder {
+        color: white;
+      }
+      input:focus {
+        outline: none;
+      }
+      #header-right #sign-in-button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #header-right #sign-up-button {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      h1,
+      h5 {
+        margin: 0;
+      }
+      #detail,
+      #title {
+        margin-right: 100px;
+      }
+      #detail {
+        margin-top: 30px;
+        color: rgb(255, 255, 255, 0.4);
+      }
+      #center {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+        display: inline-flex;
+        flex-direction: row;
+      }
+
+      #sign-up-Git {
+        width: 100%;
+        height: 70px;
+        background-color: #2ebc4e;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: large;
+        cursor: pointer;
+      }
+      #footer-div {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        height: 150px;
+        background-color: white !important;
+      }
+      #footer-image > img {
+        width: 500px;
+        height: 130%;
+        position: absolute;
+        bottom: 0;
+        right: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="wrap-top">
+        <div id="header">
+          <div id="header-left">
+            <div id="icon" class="margin">
+              <img src="./icon.png" />
+            </div>
+            <div class="item">Why GitHub? ▼</div>
+            <div class="item">Team</div>
+            <div class="item">Enterprise</div>
+            <div class="item">Explore ▼</div>
+            <div class="item">Marketplace</div>
+            <div class="item">Pricing ▼</div>
+          </div>
+          <div id="header-right">
+            <div id="text-div" class="margin">
+              <input id="text-style" type="text" placeholder="Search GitHub" />
+            </div>
+            <a href="#">
+              <button id="sign-in-button" class="margin">Sign in</button>
+            </a>
+            <a href="#">
+              <button id="sign-up-button" class="margin">Sign up</button>
+            </a>
+          </div>
+        </div>
+        <div id="center"></div>
+      </div>
+      <div id="footer-div">
+        <div>
+          <footer id="footer-image">
+            <img src="./footer.png" />
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
