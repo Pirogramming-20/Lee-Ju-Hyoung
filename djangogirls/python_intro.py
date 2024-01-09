@@ -1,10 +1,10 @@
-print('Hello, Django girls!')
+print("Hello, Django girls!")
 if 3 > 2:
-    print('It works!')
+    print("It works!")
 if 5 > 2:
-    print('5 is indeed greater than 2')
+    print("5 is indeed greater than 2")
 else:
-    print('5 is not greater than 2')
+    print("5 is not greater than 2")
 
 volume = 57
 if volume < 20:
@@ -23,11 +23,13 @@ else:
 if volume < 20 or volume > 80:
     volume = 50
     print("That's better!")
-    
-def hi(name):
-    print('Hi ' + name + '!')
 
-girls = ['Rachel', 'Monica', 'Phoebe', 'Ola', 'You']
+
+def hi(name):
+    print("Hi " + name + "!")
+
+
+girls = ["Rachel", "Monica", "Phoebe", "Ola", "You"]
 for name in girls:
     hi(name)
-    print('Next girl')
+    print("Next girl")
