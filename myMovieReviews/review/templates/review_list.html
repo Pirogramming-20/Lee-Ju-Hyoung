@@ -5,23 +5,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/review.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_list.css' %}" />
     <title>영화 뭐볼까?</title>
   </head>
   <body>
     <header>
-      <h1><span>Piro</span> Movie</h1>
+      <h1>
+        <a href="/reviews/"><span>Piro</span> Movie</a>
+      </h1>
       <h2><a href="/reviews/create"> + New Review </a></h2>
     </header>
     <section class="content">
-      {% for post in posts%}
+      {% for review in reviews%}
       <div class="content_box">
         <div class="title">
-          <a href="/reviews/{{post.id}}">{{reviews.title}}</a>
+          <a href="/reviews/{{review.id}}">{{review.title}}</a>
         </div>
-        <div class="releasedate">개봉년도 {{reviews.releasedate}}</div>
-        <div class="genre">장르 {{reviews.genre}}</div>
-        <div class="grade">평점 {{reviews.grade}}</div>
+        <div class="releasedate">
+          개봉년도 {{review.releasedate|date:"Y.m.d"}}
+        </div>
+        <div class="genre">장르 {{review.genre}}</div>
+        <div class="grade">평점 {{review.grade}}</div>
       </div>
       {% endfor %}
     </section>

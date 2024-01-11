@@ -1,11 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_create.css' %}" />
     <title>영화 상세</title>
   </head>
   <body>
-    <h1>테스트</h1>
+    <div class="content">
+      <div class="content_title">영화 리뷰하기</div>
+      <form action="/reviews/create" method="post">
+        {% csrf_token %}
+        <fieldset style="width: 100%">
+          <legend></legend>
+          <br />
+          제목: <input name="title" /> <br />
+          개봉년도: <input type="date" min="1990-01-01" name="releasedate" />
+          <br />
+          장르:
+          <select name="genre">
+            <option value="액션">액션</option>
+            <option value="SF">SF</option>
+            <option value="로맨스">로맨스</option>
+            <option value="뮤지컬">뮤지컬</option>
+            <option value="코미디">코미디</option>
+            <option value="다큐멘터리">다큐멘터리</option>
+            <option value="공포">공포</option>
+            <option value="애니메이션">애니메이션</option>
+          </select>
+          <br />
+          별점: <input name="grade" placeholder="소수점 한자리까지만 입력" />
+          <br />
+          러닝타임: <input name="runningtime" /> <br />
+          리뷰: <textarea name="content" cols="30" rows="10"></textarea> <br />
+          감독: <input name="director" /> <br />
+          배우: <input name="actor" /> <br />
+        </fieldset>
+        <div>
+          <input type="submit" value="Save" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

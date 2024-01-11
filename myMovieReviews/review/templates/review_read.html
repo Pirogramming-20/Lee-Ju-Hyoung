@@ -1,11 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_read.css' %}" />
     <title>영화 상세</title>
   </head>
   <body>
-    <h1>{{ review.title }}</h1>
+    <header>
+      <h1>
+        <a href="/reviews/"><span>Piro</span> Movie</a>
+      </h1>
+      <h2><a href="/reviews/create"> + New Review </a></h2>
+    </header>
+    <section class="review_detail">
+      <h1>{{ review.title }}</h1>
+      <div class="detail_box">
+        <h5><span>개봉년도 </span>{{ review.releasedate |date:"Y"}}년</h5>
+        <h5><span>감독 </span>{{ review.director }}</h5>
+        <h5><span>주연 </span>{{ review.actor }}</h5>
+        <h5><span>장르 </span>{{ review.genre }}</h5>
+        <h5><span>별점 </span>{{ review.grade }}</h5>
+        <h5><span>러닝타임 </span>{{ review.runningtime }}</h5>
+      </div>
+      <div class="detail_content"><p>{{review.content}}</p></div>
+    </section>
   </body>
 </html>

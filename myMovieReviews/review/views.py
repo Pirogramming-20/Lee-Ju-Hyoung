@@ -11,8 +11,9 @@ def reviews_list(request):
 def review_read(request, pk) :
     review = Review.objects.get(id = pk)
     context = {
-        "post" : post
+        "review" : review
     }
+    return render(request, "review_read.html", context)
 
 def review_create(request) :
     if request.method == "POST" :
@@ -20,7 +21,7 @@ def review_create(request) :
             title = request.POST["title"],
             releasedate = request.POST["releasedate"],
             genre = request.POST["genre"],
-            garde = request.POST["garde"],
+            garde = request.POST["grade"],
             runningtime = request.POST["runningtime"],
             content = request.POST["content"],
             director = request.POST["director"],
