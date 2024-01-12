@@ -4,31 +4,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/review_header.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/review_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}?ver=220610" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/review_header.css' %}?ver=220610"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/review_list.css' %}?ver=220610"
+    />
     <title>영화 뭐볼까?</title>
   </head>
   <body>
     <header>
       <h1>
-        <a href="/reviews/"><span>Piro</span> Movie</a>
+        <a href="/reviews"><span>Piro</span> Movie</a>
       </h1>
       <h2><a href="/reviews/create"> + New Review </a></h2>
     </header>
     <section class="content">
-      {% for review in reviews%}
-      <div class="content_box">
-        <div class="title">
-          <a href="/reviews/{{review.id}}">{{review.title}}</a>
+      <div class="content_box_list">
+        {% for review in reviews%}
+        <div class="content_box">
+          <div class="poster">포스터</div>
+          <div class="title">
+            <a href="/reviews/{{review.id}}">{{review.title}}</a>
+          </div>
+          <div class="releasedate">
+            <span>개봉일자</span> {{review.releasedate}}
+          </div>
+          <div class="genre"><span>장르</span> {{review.genre}}</div>
+          <div class="grade"><span>평점</span> {{review.grade}}</div>
         </div>
-        <div class="releasedate">
-          <span>개봉년도</span> {{review.releasedate}}
-        </div>
-        <div class="genre"><span>장르</span> {{review.genre}}</div>
-        <div class="grade"><span>평점</span> {{review.grade}}</div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </section>
   </body>
 </html>

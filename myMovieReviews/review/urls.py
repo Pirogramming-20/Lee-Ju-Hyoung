@@ -4,9 +4,10 @@ from .views import *
 app_name = 'review'
 
 urlpatterns = [
-    path('', reviews_list, name='review_list'),
-    path('<int:pk>', review_read),
-    path('create', review_create),
-    path('<int:pk>/update', review_update),
-    path('<int:pk>/delete', review_delete),
+    path('', start, name='start'),
+    path('reviews/', reviews_list, name='review_list'),
+    path('reviews/<int:pk>', review_read),
+    path('reviews/create', review_create),
+    path('reviews/<int:pk>/update', review_update),
+    path('reviews/<int:pk>/delete', review_delete),
 ]

@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import *
 
-def reviews_list(request):
+def start(request) :
+    return render(request, 'start.html')
+
+def reviews_list(request) :
     reviews = Review.objects.all()
     context = {
         "reviews" : reviews
