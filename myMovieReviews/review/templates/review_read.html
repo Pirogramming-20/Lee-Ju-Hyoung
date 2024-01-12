@@ -37,7 +37,10 @@
         <h5><span>주연 </span>{{ review.actor }}</h5>
         <h5><span>장르 </span>{{ review.genre }}</h5>
         <h5><span>별점 </span>{{ review.grade }}</h5>
-        <h5><span>러닝타임 </span>{{ review.runningtime }}</h5>
+        <h5>
+          <span>러닝타임 </span>{{ review.runningtimehour }}시간
+          {{review.runningtimeminute }}분
+        </h5>
       </div>
       <div class="detail_content"><p>{{review.content}}</p></div>
     </section>

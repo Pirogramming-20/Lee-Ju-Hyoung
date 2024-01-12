@@ -39,9 +39,21 @@
             <option value="애니메이션">애니메이션</option>
           </select>
           <br />
-          별점: <input name="grade" placeholder="소수점 한자리까지만 입력" />
+          별점:
+          <input
+            type="number"
+            name="grade"
+            step="0.1"
+            placeholder="소수점 한자리까지만 입력하세요!"
+          />
           <br />
-          러닝타임: <input name="runningtime" /> <br />
+          러닝타임:
+          <input
+            type="number"
+            name="runningtime"
+            placeholder="정수만 입력하세요!"
+          />
+          <br />
           리뷰: <textarea name="content" cols="30" rows="10"></textarea> <br />
           감독: <input name="director" /> <br />
           배우: <input name="actor" /> <br />

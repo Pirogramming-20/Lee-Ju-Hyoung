@@ -22,7 +22,9 @@ def review_create(request) :
             releasedate = request.POST["releasedate"],
             genre = request.POST["genre"],
             grade = request.POST["grade"],
-            runningtime = request.POST["runningtime"],
+            runningtime = int(request.POST["runningtime"]),
+            runningtimehour = int(request.POST["runningtime"])//60,
+            runningtimeminute = int(request.POST["runningtime"])%60,
             content = request.POST["content"],
             director = request.POST["director"],
             actor = request.POST["actor"],
@@ -33,14 +35,16 @@ def review_create(request) :
 def review_update(request, pk) :
     review = Review.objects.get(id=pk)
     if request.method == "POST" :
-        review.title = request.POST["title"],
-        review.releasedate = request.POST["releasedate"],
-        review.genre = request.POST["genre"],
-        review.grade = request.POST["grade"],
-        review.runningtime = request.POST["runningtime"],
-        review.content = request.POST["content"],
-        review.director = request.POST["director"],
-        review.actor = request.POST["actor"],
+        review.title = request.POST["title"]
+        review.releasedate = request.POST["releasedate"]
+        review.genre = request.POST["genre"]
+        review.grade = request.POST["grade"]
+        review.runningtime = int(request.POST['runningtime'])
+        review.runningtimehour = int(request.POST['runningtime'])//60
+        review.runningtimeminute = int(request.POST['runningtime'])%60
+        review.content = request.POST["content"]
+        review.director = request.POST["director"]
+        review.actor = request.POST["actor"]
         review.save()
         return redirect(f"/reviews/{pk}")
     

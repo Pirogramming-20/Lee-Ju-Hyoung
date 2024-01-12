@@ -25,7 +25,20 @@
           <br />
           제목: <input name="title" value="{{review.title}}" /> <br />
           개봉년도:
-          <input type="date" min="1990-01-01" name="releasedate" required />
+          <input
+            type="date"
+            min="1990-01-01"
+            name="releasedate"
+            {%
+            if
+            review.releasedate
+            %}
+            value="{{ review.releasedate}}"
+            {%
+            endif
+            %}
+            required
+          />
           <br />
           장르:
           <select name="genre">
@@ -58,12 +71,20 @@
           <br />
           별점:
           <input
+            type="number"
             name="grade"
-            placeholder="소수점 한자리까지만 입력"
+            step="0.1"
+            placeholder="소수점 한자리까지만 입력하세요!"
             value="{{review.grade}}"
           />
           <br />
-          러닝타임: <input name="runningtime" value="{{review.runningtime}}" />
+          러닝타임:
+          <input
+            type="number"
+            name="runningtime"
+            placeholder="정수만 입력하세요!"
+            value="{{review.runningtime}}"
+          />
           <br />
           리뷰:
           <textarea name="content" cols="30" rows="10">
