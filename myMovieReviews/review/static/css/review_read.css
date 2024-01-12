@@ -1,0 +1,40 @@
+.review_detail {
+  width: 80%;
+  margin: 50px;
+  padding: 20px;
+}
+.review_detail_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.review_detail_header > h1 {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.detail_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  background-color: #c4c4c4;
+  padding: 20px;
+  gap: 10px;
+}
+
+.detail_box span {
+  font-weight: bold;
+}
+
+.detail_content {
+  padding: 20px;
+  background-color: #c4c4c4;
+}

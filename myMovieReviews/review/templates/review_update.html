@@ -1,11 +1,82 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/review_update.css' %}" />
     <title>영화 상세</title>
   </head>
   <body>
-    <h1>{{ review.title }}</h1>
+    <header>
+      <h1>
+        <a href="/reviews/"><span>Piro</span> Movie</a>
+      </h1>
+      <h2><a href="/reviews/create"> + New Review </a></h2>
+    </header>
+    <div class="content">
+      <div class="content_title">리뷰 수정하기</div>
+      <form action="/reviews/{{review.id}}/update" method="post">
+        {% csrf_token %}
+        <fieldset style="width: 100%">
+          <legend></legend>
+          <br />
+          제목: <input name="title" value="{{review.title}}" /> <br />
+          개봉년도:
+          <input type="date" min="1990-01-01" name="releasedate" required />
+          <br />
+          장르:
+          <select name="genre">
+            {% if review.genre == '액션' %}
+            <option value="액션" selected>액션</option>
+            {% elif review.genre == 'SF' %}
+            <option value="SF" selected>SF</option>
+            {% elif review.genre == '로맨스' %}
+            <option value="로맨스" selected>로맨스</option>
+            {% elif review.genre == '뮤지컬' %}
+            <option value="뮤지컬" selected>뮤지컬</option>
+            {% elif review.genre == '코미디' %}
+            <option value="코미디" selected>코미디</option>
+            {% elif review.genre == '다큐멘터리' %}
+            <option value="다큐멘터리" selected>다큐멘터리</option>
+            {% elif review.genre == '공포' %}
+            <option value="공포" selected>공포</option>
+            {% elif review.genre == '애니메이션' %}
+            <option value="애니메이션" selected>애니메이션</option>
+            {% endif %}
+            <option value="액션">액션</option>
+            <option value="SF">SF</option>
+            <option value="로맨스">로맨스</option>
+            <option value="뮤지컬">뮤지컬</option>
+            <option value="코미디">코미디</option>
+            <option value="다큐멘터리">다큐멘터리</option>
+            <option value="공포">공포</option>
+            <option value="애니메이션">애니메이션</option>
+          </select>
+          <br />
+          별점:
+          <input
+            name="grade"
+            placeholder="소수점 한자리까지만 입력"
+            value="{{review.grade}}"
+          />
+          <br />
+          러닝타임: <input name="runningtime" value="{{review.runningtime}}" />
+          <br />
+          리뷰:
+          <textarea name="content" cols="30" rows="10">
+{{review.content}}</textarea
+          >
+          <br />
+          감독: <input name="director" value="{{review.director}}" /> <br />
+          배우: <input name="actor" value="{{review.actor}}" /> <br />
+        </fieldset>
+        <div>
+          <input type="submit" value="수정완료" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

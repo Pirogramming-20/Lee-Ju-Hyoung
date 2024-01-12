@@ -21,7 +21,7 @@ def review_create(request) :
             title = request.POST["title"],
             releasedate = request.POST["releasedate"],
             genre = request.POST["genre"],
-            garde = request.POST["grade"],
+            grade = request.POST["grade"],
             runningtime = request.POST["runningtime"],
             content = request.POST["content"],
             director = request.POST["director"],
@@ -29,3 +29,28 @@ def review_create(request) :
         )
         return redirect("/reviews")
     return render(request, "review_create.html")
+
+def review_update(request, pk) :
+    review = Review.objects.get(id=pk)
+    if request.method == "POST" :
+        review.title = request.POST["title"],
+        review.releasedate = request.POST["releasedate"],
+        review.genre = request.POST["genre"],
+        review.grade = request.POST["grade"],
+        review.runningtime = request.POST["runningtime"],
+        review.content = request.POST["content"],
+        review.director = request.POST["director"],
+        review.actor = request.POST["actor"],
+        review.save()
+        return redirect(f"/reviews/{pk}")
+    
+    context={
+        "review" : review
+    }
+    return render(request, "review_update.html", context)
+
+def review_delete(request, pk) :
+    if request.method == "POST" :
+        review = Review.objects.get(id=pk)
+        review.delete()
+    return redirect("/reviews")

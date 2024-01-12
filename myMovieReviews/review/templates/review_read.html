@@ -17,7 +17,20 @@
       <h2><a href="/reviews/create"> + New Review </a></h2>
     </header>
     <section class="review_detail">
-      <h1>{{ review.title }}</h1>
+      <div class="review_detail_header">
+        <h1>{{ review.title }}</h1>
+        <div class="buttons">
+          <div class="modify">
+            <a href="/reviews/{{review.id}}/update"> 수정 </a>
+          </div>
+          <div class="remove">
+            <form action="/reviews/{{review.id}}/delete" method="post">
+              {% csrf_token %}
+              <input type="submit" value="삭제" />
+            </form>
+          </div>
+        </div>
+      </div>
       <div class="detail_box">
         <h5><span>개봉년도 </span>{{ review.releasedate |date:"Y"}}년</h5>
         <h5><span>감독 </span>{{ review.director }}</h5>
