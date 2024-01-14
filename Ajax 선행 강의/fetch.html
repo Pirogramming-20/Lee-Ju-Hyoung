@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article></article>
+    <input
+      type="button"
+      value="fetch"
+      onclick="
+      /*fetch('html').then(function(response){  
+        response.text().then(function(text){
+          document.querySelector('article').innerHTML = text;
+        })
+      })
+      */
+      fetch('html').then(function(response){
+        if(response.status == '404'){
+          alert('Not found')
+        }
+      });
+      console.log(1);
+      console.log(2);
+    "
+    />
+    <!--html파일 요청을 하고, 요청이 끝나면
+    html의 text파일을 article 안으로 보낸다.
+    Ajax는 비동기로, 하나의 명령어가 실행될때 다른 것도 동시에 실행된다.-->
+  </body>
+</html>
