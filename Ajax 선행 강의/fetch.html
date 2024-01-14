@@ -11,11 +11,20 @@
       type="button"
       value="fetch"
       onclick="
+      /*
       fetch('html').then(function(response){
         response.text().then(function(text){
           document.querySelector('article').innerHTML = text;
         })
       })
+      */
+      //Asynchronous
+      function callbackme(){
+        console.log('response end');
+      }
+      fetch('html').then(callmeback);
+      console.log(1);
+      console.log(2);
     "
     />
     <!--html파일 요청을 하고, 요청이 끝나면
