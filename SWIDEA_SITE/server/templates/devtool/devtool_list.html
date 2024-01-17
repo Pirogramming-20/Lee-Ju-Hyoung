@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{%block content%}
+<div class="content-wrapper">
+  {%for devtool in devtools%}
+  <div class="item">
+    <div class="info">
+      <h5><a href="{%url 'devtool:detail' devtool.pk%}" class="title"> {{ devtool.name }} </a></h5>
+      <h5 class="kind"> {{devtool.kind}}</h5>
+      <h5 class="content"> {{devtool.content}}</h5>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+{%endblock%}

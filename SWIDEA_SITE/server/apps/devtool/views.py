@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .form import DevToolForm
 from .models import DevTool
+from apps.idea.models import Idea
 
 # Create your views here.
 def list(request):
@@ -21,7 +22,9 @@ def create(request):
 
 def detail(request, pk):
     devtools = DevTool.objects.get(id=pk)
-    ctx = {'devtool': devtools}
+    ideas = Idea.objects.all()
+    related_ideas = devtools.idea_set.all()
+    ctx = {'idea':ideas, 'devtool': devtools, 'related_ideas' : related_ideas}
     return render(request, 'devtool/devtool_detail.html', ctx)
 
 def delete(request, pk):

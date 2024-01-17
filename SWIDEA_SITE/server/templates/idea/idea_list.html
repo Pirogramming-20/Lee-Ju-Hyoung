@@ -5,9 +5,9 @@
   {%for idea in ideas%}
   <div class="item">
     {%if idea.image.url != null and idea.image.url != ''%}
-    <img src="{{idea.image.url}}" alt="대체텍스트" />
+    <img src="{{idea.image.url}}" alt="로고" />
     {%else%}
-    <img src="{% static 'idea/image/no_image.png' %}" alt="" />
+    <img src="{% static 'image/no_image.png' %}" alt="대체텍스트" />
     {%endif%}
     <div class="info">
       <a href="{%url 'idea:detail' idea.pk%}" class="title"> {{ idea.title }} </a>

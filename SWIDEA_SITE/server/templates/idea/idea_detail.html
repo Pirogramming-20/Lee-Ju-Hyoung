@@ -4,9 +4,9 @@
 {% block content %}
 <div class="photo">
   {% if idea.image.url != '' %}
-    <img src="{{idea.image.url}}" alt="제품 이미지" />
+    <img src="{{idea.image.url}}" alt="로고" />
   {% else %}
-    <img src="{% static 'posts/image/no_img.png' %}" alt="대체 텍스트" />
+    <img src="{% static 'image/no_img.png' %}" alt="대체 텍스트" />
   {% endif %}
 </div>  
 <h1 style="color: green; font-size: 40px">{{idea.title}}</h1>
@@ -16,7 +16,8 @@
 
   <form action="{% url 'idea:delete' idea.pk %}" method="POST">
     {%csrf_token%}
-    <a href="{% url 'idea:update' idea.pk %}" class="btn btn-primary">수정</a>
-    <button type="submit" class="btn btn-danger">삭제</button>
+    <a href="{% url 'idea:update' idea.pk %}" class="btn btn-modify">수정</a>
+    <a href="{% url 'idea:main'%}" class="btn btn-list">목록</a>
+    <button type="submit" class="btn btn-delete">삭제</button>
   </form>
 {% endblock content %}
