@@ -8,7 +8,19 @@
 <div class="content-wrapper">
   <div class="content_title">Idea List</div>
   <div class="content_info">나의 아이디어를 잊지말고 기록하세요!</div>
-  <div class="item_box">
+  <label for="sortSelect">Sort by:</label>
+  <div class="sort">
+    <form>
+      <select name="sort" onchange="form.submit()" id="mySelect">
+        <option>---------</option>
+        <option value="title">이름순</option>
+        <option value="pk">등록순</option>
+        <option value="recent_date">최신순</option>
+        <option value="interest">인기순</option>
+      </select>
+    </form>
+  </div>
+  <div class="item_box">    
   {%for idea in ideas%}  
     <div class="item">
       {%if idea.image.url != null and idea.image.url != ''%}
@@ -19,10 +31,16 @@
       <div class="info">
         <a href="{%url 'idea:detail' idea.pk%}" class="idea_title"> {{ idea.title }} </a>
         <p class="devtool">예상 개발 툴 : {{idea.devtool.name}}</p>
-        <p class="interest">아이디어 관심도 : {{idea.interest}}</p>
+        <p class="interest">
+          아이디어 관심도 : 
+          <input type="button" value="+" onclick="">
+          <span id="interest_{{ idea.pk }}">{{ idea.interest }}</span>
+          <input type="button" value="-" onclick="">
+        </p>
       </div>
     </div>
   {%endfor%}
   </div>
 </div>
+
 {%endblock%}

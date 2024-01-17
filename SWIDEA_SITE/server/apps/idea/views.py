@@ -2,9 +2,17 @@ from django.shortcuts import render, redirect
 from .form import IdeaForm
 from .models import Idea
 
-# Create your views here.
 def main(request) :
     idea = Idea.objects.all()
+    sort = request.GET.get('sort')
+    if sort == 'title':
+        idea = idea.order_by('title')
+    elif sort == 'pk':
+        idea= idea.order_by('pk')
+    elif sort == 'recent_date':
+        idea = idea.order_by('-pk')
+    elif sort == 'interest':
+        idea = idea.order_by('-interest')
     ctx = {'ideas' : idea }
     return render(request, 'idea/idea_list.html', ctx)
 
@@ -43,4 +51,15 @@ def update(request, pk) :
     if form.is_valid():
         form.save()
     return redirect('idea:detail', pk)
-    
+   
+def idea_list(request, sort_option=None):
+    sort_option = request.GET.get('sort', 'name')
+
+    if sort_option == 'name':
+        ideas = Idea.objects.all().order_by('title')
+    elif sort_option == 'id':
+        ideas = Idea.objects.all().order_by('pk')
+    else:
+        ideas = Idea.objects.all()
+
+    return render(request, 'idea_list.html', {'ideas': ideas})

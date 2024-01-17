@@ -2,25 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💻SW IDEA</title>
-    <link rel="stylesheet" href="{% static 'idea/css/style.css' %}">
-    {%block head%}
-    {%endblock%}
-</head>
-<body>
-    <header>
-        <a href="{%url 'idea:main'%}" class="title">My <span>SW Idea</span> Manage</a>
-        <div class="category">
-            <a href="{%url 'idea:create'%}" class="category_list">아이디어 등록</a>
-            <a href="{%url 'idea:main'%}" class="category_list">아이디어 관리</a>
-            <a href="{%url 'devtool:create'%}" class="category_list">개발툴 등록</a>
-            <a href="{%url 'devtool:list'%}" class="category_list">개발툴 관리</a>
-        </div>
-    </header>
-    {%block content%}
-    {%endblock%}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>💻SW IDEA</title>
+        <link rel="stylesheet" href="{% static 'idea/css/style.css' %}">
+        {%block head%}
+        {%endblock%}
+    </head>
+    <body>
+        <header>
+            <a href="{%url 'idea:main'%}" class="title">My <span>SW Idea</span> Manage</a>
+            <div class="category">
+                <a href="{%url 'idea:create'%}" class="category_list">아이디어 등록</a>
+                <a href="{%url 'idea:main'%}" class="category_list">아이디어 관리</a>
+                <a href="{%url 'devtool:create'%}" class="category_list">개발툴 등록</a>
+                <a href="{%url 'devtool:list'%}" class="category_list">개발툴 관리</a>
+            </div>
+        </header>
+        {%block content%}
+        {%endblock%}
+    </body>
 </html>
