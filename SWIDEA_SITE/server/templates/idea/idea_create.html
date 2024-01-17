@@ -1,0 +1,13 @@
+{% extends 'main.html' %} 
+
+{%block content%}
+
+<form
+  action="{% url 'idea:create' %}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {%csrf_token%} {{form.as_p}}
+  <button class="btn btn-success">SUBMIT</button>
+</form>
+{%endblock%}

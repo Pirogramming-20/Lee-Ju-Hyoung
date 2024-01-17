@@ -1,0 +1,20 @@
+{% extends 'main.html' %} {% load static %}
+{%block content%}
+
+<div class="content-wrapper">
+  {%for idea in ideas%}
+  <div class="item">
+    {%if idea.image.url != null and idea.image.url != ''%}
+    <img src="{{idea.image.url}}" alt="대체텍스트" />
+    {%else%}
+    <img src="{% static 'idea/image/no_image.png' %}" alt="" />
+    {%endif%}
+    <div class="info">
+      <a href="{%url 'idea:detail' idea.pk%}" class="title"> {{ idea.title }} </a>
+      <p class="devtool">예상 개발 툴 : {{idea.devtool.name}}</p>
+      <p class="interest">아이디어 관심도 : {{idea.interest}}</p>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+{%endblock%}
