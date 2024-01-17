@@ -16,8 +16,10 @@ def create(request) :
     #post일때
     form = IdeaForm(request.POST, request.FILES)
     if form.is_valid():
-        form.save()
-    return redirect('idea:main')
+        new_idea = form.save()
+        return redirect('idea:detail', pk=new_idea.pk)
+    else :
+        return redirect('idea:main')
 
 def detail(request, pk) :
     ideas = Idea.objects.get(id=pk)

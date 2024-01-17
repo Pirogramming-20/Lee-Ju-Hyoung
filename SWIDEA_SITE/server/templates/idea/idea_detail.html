@@ -6,7 +6,7 @@
   {% if idea.image.url != '' %}
     <img src="{{idea.image.url}}" alt="로고" />
   {% else %}
-    <img src="{% static 'image/no_img.png' %}" alt="대체 텍스트" />
+    <img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
   {% endif %}
 </div>  
 <h1 style="color: green; font-size: 40px">{{idea.title}}</h1>

@@ -17,8 +17,10 @@ def create(request):
     #post일때
     form = DevToolForm(request.POST)
     if form.is_valid():
-        form.save()
-    return redirect('devtool:list')
+        new_devtool = form.save()
+        return redirect('devtool:detail', pk=new_devtool.pk)
+    else :
+        return redirect('devtool:list')
 
 def detail(request, pk):
     devtools = DevTool.objects.get(id=pk)
