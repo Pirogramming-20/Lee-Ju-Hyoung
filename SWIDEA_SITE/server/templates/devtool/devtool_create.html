@@ -1,13 +1,16 @@
 {% extends 'main.html' %} 
 {% load static %}
 {%block content%}
-
-<form
-  action="{% url 'devtool:create' %}"
-  method="post"
-  enctype="multipart/form-data"
->
-  {%csrf_token%} {{form.as_p}}
-  <button class="btn btn-success">SUBMIT</button>
-</form>
+<div class="content-wrapper">  
+  <div class="content_title">DevTool Create</div>
+  <div class="content_info">사용할 수 있는 개발툴을 자세히 입력해주세요!</div>  
+  <form
+    action="{% url 'devtool:create' %}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {%csrf_token%} {{form.as_p}}
+    <button class="btn btn-success">SUBMIT</button>
+  </form>
+</div>
 {%endblock%}

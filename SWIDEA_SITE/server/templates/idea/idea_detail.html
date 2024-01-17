@@ -1,18 +1,27 @@
 {% extends 'main.html' %}
 {% load static %}
+{%block head%}
+<link rel="stylesheet" href="{% static 'idea/css/idea_detail.css' %}">
+{%endblock%}
 
 {% block content %}
-<div class="photo">
-  {% if idea.image.url != '' %}
-    <img src="{{idea.image.url}}" alt="로고" />
-  {% else %}
-    <img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
-  {% endif %}
-</div>  
-<h1 style="color: green; font-size: 40px">{{idea.title}}</h1>
-  <h5>1) 아이디어 관심도 <br>{{idea.interest}}</h5>
-  <h5>2) 예상 개발 툴 <br>{{idea.devtool.name}}</h5>
-  <h5>3) 아이디어 설명 <br>{{idea.interest}}</h5>
+<div class="content-wrapper">  
+  <div class="content_title">Idea Detail</div>
+  <div class="content_info">아이디어 세부페이지 입니다. 구현한 아이디어를 자세히 살펴보세요!</div>  
+
+  <div class="photo">
+    {% if idea.image.url != '' %}
+      <img src="{{idea.image.url}}" alt="로고" />
+    {% else %}
+      <img src="{% static 'idea/image/no_img.png' %}" alt="대체 텍스트" />
+    {% endif %}
+  </div>  
+  <h1 style="color: #42a5f5; font-size: 40px">{{idea.title}}</h1>
+  <div class="info_box">
+    <h5>1) 아이디어 관심도 <br>{{idea.interest}}</h5>
+    <h5>2) 예상 개발 툴 <br>{{idea.devtool.name}}</h5>
+    <h5>3) 아이디어 설명 <br>{{idea.content}}</h5>
+  </div>
 
   <form action="{% url 'idea:delete' idea.pk %}" method="POST">
     {%csrf_token%}
@@ -20,4 +29,5 @@
     <a href="{% url 'idea:main'%}" class="btn btn-list">목록</a>
     <button type="submit" class="btn btn-delete">삭제</button>
   </form>
+</div>
 {% endblock content %}

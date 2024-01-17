@@ -1,11 +1,19 @@
 {% extends 'main.html' %}
 {% load static %}
 
+{%block head%}
+<link rel="stylesheet" href="{% static 'devtool/css/devtool_detail.css' %}">
+{%endblock%}
+
 {% block content %} 
-<h1 style="color: green; font-size: 40px">{{devtool.title}}</h1>
+<div class="content-wrapper">  
+  <div class="content_title">DevTool Detail</div>
+  <div class="content_info">개발툴 상세 페이지입니다. 내용을 자세히 살펴보세요!</div>  
+
+  <h1>{{devtool.name}}</h1>
   <div class="info">
-      <h5>{{devtool.kind}}</h5>
-      <h5>{{devtool.content}}</h5>
+      <h5 class="devtool_kind">{{devtool.kind}}</h5>
+      <h5 class="devtool_content">{{devtool.content}}</h5>
       <h5>>만들 수 있는 SW 목록</h5>
       {% for rel_idea in related_ideas %}
         <a href="{% url 'idea:detail' rel_idea.pk %}" class="btn btn-success">
@@ -20,4 +28,5 @@
     <a href="{% url 'devtool:list'%}" class="btn btn-list">목록</a>
     <button type="submit" class="btn btn-delete">삭제</button>
   </form>
+</div>
 {% endblock content %}

@@ -1,12 +1,17 @@
 {% extends 'main.html' %}
 {% load static %}
+{%block head%}
+<link rel="stylesheet" href="{% static 'devtool/css/devtool_list.css' %}">
+{%endblock%}
 
 {%block content%}
 <div class="content-wrapper">
+  <div class="content_title">DevTool List</div>
+  <div class="content_info">개발툴 목록입니다. 자신이 사용 가능한 개발툴을 확인해보세요.</div>
   {%for devtool in devtools%}
   <div class="item">
     <div class="info">
-      <h5><a href="{%url 'devtool:detail' devtool.pk%}" class="title"> {{ devtool.name }} </a></h5>
+      <h5><a href="{%url 'devtool:detail' devtool.pk%}" class="devtool_title"> {{ devtool.name }} </a></h5>
       <h5 class="kind"> {{devtool.kind}}</h5>
       <h5 class="content"> {{devtool.content}}</h5>
     </div>

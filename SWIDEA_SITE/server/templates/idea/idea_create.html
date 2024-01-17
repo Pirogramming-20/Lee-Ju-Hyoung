@@ -2,13 +2,16 @@
 {% load static %}
 
 {%block content%}
-
-<form
-  action="{% url 'idea:create' %}"
-  method="post"
-  enctype="multipart/form-data"
->
-  {%csrf_token%} {{form.as_p}}
-  <button class="btn btn-success">SUBMIT</button>
-</form>
+<div class="content-wrapper">  
+  <div class="content_title">Idea Create</div>
+  <div class="content_info">새로운 아이디어를 작성해보세요!</div>  
+  <form
+    action="{% url 'idea:create' %}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {%csrf_token%} {{form.as_p}}
+    <button class="btn btn-success">SUBMIT</button>
+  </form>
+</div>
 {%endblock%}

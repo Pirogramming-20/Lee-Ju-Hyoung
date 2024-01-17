@@ -1,0 +1,49 @@
+h1 {
+    color: #42a5f5;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.info {
+    margin: 20px 0;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: gray;
+}
+
+.btn-modify {
+    background-color: #42a5f5;
+}
+
+.btn-list {
+    background-color: #66bb6a; 
+}
+
+.btn-delete {
+    background-color: #e57373;
+}
+
+.btn:hover {
+    background-color: #333;
+}

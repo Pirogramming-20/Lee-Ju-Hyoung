@@ -1,6 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
 {%block content%}
+<div class="content-wrapper">  
+  <div class="content_title">DevTool Update</div>
+  <div class="content_info">내용을 수정하거나 구체화 해보세요!</div>  
   <form
     action="{% url 'devtool:update' pk %}"
     method="post"
@@ -8,4 +11,5 @@
     {%csrf_token%} {{form.as_p}}
     <button class="btn btn-primary">수정 완료</button>
   </form>
+</div>
 {%endblock%}
