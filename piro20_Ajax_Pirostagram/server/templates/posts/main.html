@@ -28,12 +28,7 @@
     <div class="post_content">{{ post.content }}</div>
     <div class="comment_list">
         
-        {% for comment in post.comments.all %}
-                <div class="post_comments">
-                    <div class="comment_writer">{{ comment.user.nickname }}</div>
-                    <div id="commentList-{{ post.id }}"></div>
-                </div>
-        {% endfor %}
+        <div id="commentList-{{ post.id }}"></div>
         
     </div>  
     
@@ -97,14 +92,13 @@
         requestComment.onreadystatechange = () => {
             if (requestComment.readyState === XMLHttpRequest.DONE) {
                 if (requestComment.status < 400) {
-                    console.log("댓글이 등록되었습니다.");
                     getComments(id);
-                } else {
-                    console.error("댓글 등록에 실패했습니다.");
+                    document.getElementById(`commentInput-${id}`).value = "";
                 }
             }
         };
         requestComment.send(JSON.stringify({id:id, comment: commentInput}))
+        commentInput=""
     }
 
     const getComments = (postId) => {
@@ -118,7 +112,8 @@
                 if (requestComments.status < 400) {
                     const comments = JSON.parse(requestComments.response);
                     commentListContainer.innerHTML = comments.map(comment => `
-                        <p>${comment.content} 
+                        <p><span class="comment-user">${comment.user ? comment.user.nickname : '익명'} : </span>
+                            ${comment.content} 
                             <button onclick="onDeleteComment(${postId}, ${comment.id})">삭제</button>
                         </p>`).join('');
                 }
@@ -134,10 +129,7 @@
         requestDeleteComment.onreadystatechange = () => {
             if (requestDeleteComment.readyState === XMLHttpRequest.DONE) {
                 if (requestDeleteComment.status < 400) {
-                    console.log("댓글이 삭제되었습니다.");
                     getComments(postId);
-                } else {
-                    console.error("댓글 삭제에 실패했습니다.");
                 }
             }
         };

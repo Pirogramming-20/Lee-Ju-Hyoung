@@ -52,26 +52,24 @@ def comment(request):
     if request.method == 'POST':
         req = json.loads(request.body)
         post_id = req.get('id')
+        user=request.user
         post_comment = req.get('comment')
         if post_id and post_comment:
-            try:
-                post = Post.objects.get(id=post_id)
-                comment = Comment(post=post, content=post_comment)
-                comment.save()
-                return JsonResponse({'status': 'success'})
-            except Post.DoesNotExist:
-                return JsonResponse({'status': 'error', 'message': 'Post does not exist'})
-        else:
-            return JsonResponse({'status': 'error', 'message': 'Invalid request data'})
+            post = Post.objects.get(id=post_id)
+            comment = Comment(user=user, post=post, content=post_comment)
+            comment.save()
+            return JsonResponse({'status': 'success'})
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
         
-        
+    
+from django.core.serializers import serialize
 @csrf_exempt
 def get_comments(request, pk):
     if request.method == 'GET':
         comments = Comment.objects.filter(post__id=pk)
-        serialized_comments = [{'id': comment.id, 'content': comment.content} for comment in comments]
+        users=request.user.nickname
+        serialized_comments = [{'user':users, 'id': comment.id, 'content': comment.content} for comment in comments]
         return JsonResponse(serialized_comments, safe=False)
 
     return JsonResponse({'error': 'Invalid request method'})
