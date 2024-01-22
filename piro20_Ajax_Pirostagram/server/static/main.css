@@ -1,0 +1,29 @@
+.post_list{
+    width: 60%;
+    margin: 20px auto;
+}
+
+.post_user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+}
+
+.post_photo {
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    max-width: 100%; 
+    height: auto; 
+    display: inline-block; 
+}
+
+.post_nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    font-size: 30px;
+}

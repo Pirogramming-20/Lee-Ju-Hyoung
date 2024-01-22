@@ -1,0 +1,41 @@
+html{
+    position: relative;
+}
+header{
+    width: 100%;
+    position: fixed;
+    margin: auto;
+    top: 0px;
+    background-color: white;
+    border-bottom: 2px solid gray;
+}
+
+.header_content{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    font-size: 30px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav > a,
+nav > a > i{
+    margin: 0 6px;
+}
+
+.content_wrapper{
+    width: 80%;
+    margin: 100px auto 30px;
+}
+
+.header_title{
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
+    font-family: 'Lemon', serif;
+    font-weight: bold;
+}

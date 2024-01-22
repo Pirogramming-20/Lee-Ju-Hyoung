@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{%load static%}
+{%block head%}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+{%endblock%}
+
+{%block content%}
+<div class="post_list">
+{% for post in posts%}
+<div class="post_content post-id-{{ post.id }}">
+    <div class="post_user">
+        <i class="fa-solid fa-user"></i>
+        <div class="post_writer">{{post.user.nickname}}</div>
+    </div>
+    <div class="post_photo"><img src="{{post.image.url}}" alt=""></div>
+    <div class="post_nav">
+        <div class="nav_left">
+            {% if user.is_authenticated %}
+            <i class="fa-regular fa-heart" onclick="onClickLike({{ post.id }}, {{ post.user.has_liked }})"></i>
+            {% else %}
+            <i class="fa-regular fa-heart"></i>
+            {% endif %}
+            <i class="fa-regular fa-comment" onclick="showCommentForm()"></i>
+        </div>
+        <i class="fa-regular fa-bookmark"></i>
+    </div>
+    <div class="post_like">좋아요 : <span class="like-count">{{ post.like }}</span>개</div>
+    <div class="post_content">{{ post.content }}</div>
+    <div class="comment_list">
+        {% for comment in post.comments.all %}
+                <div class="post_comments">
+                    <div class="comment_writer">{{ comment.user.nickname }}</div>
+                    <div class="comment_content">{{ comment.content }}</div>
+                </div>
+            {% endfor %}
+        <div class="comment_create"></div>
+    </div>  
+</div>
+{% endfor %}
+</div>
+{%endblock%}
+
+{%block extra%}
+<script>
+    const requestLike = new XMLHttpRequest();
+    
+    const onClickLike = (id, type) => {
+        const url = "/post_like/"; 
+        requestLike.open("POST", url, true); 
+        requestLike.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestLike.send(JSON.stringify({id:id, type:type})); 
+    }
+    /*어떤 글인지(id) 좋아요인지 싫어요인지(type)*/
+    /*어느 위치 url로 보낼건지*/
+    /*포스트방식으로 url을 보낸다. 비동기방식(true)로*/
+    /*요청 보내는 코드 stringify : 스트링형태로*/
+    
+
+    requestLike.onreadystatechange = () => {
+        if (requestLike.readyState === XMLHttpRequest.DONE) {
+            if (requestLike.status < 400){
+                const {id, type} = JSON.parse(requestLike.response);
+                const element = document.querySelector(`.post-id-${id} .like-count`);
+                const originHTML = element.innerHTML;
+                let count = Number(originHTML);
+                
+                if(count%2 == 0){
+                    count = count + 1
+                }
+                else{
+                    count = count - 1
+                }
+                element.innerHTML = count;
+            }
+        }
+    }
+
+</script>
+{%endblock%}

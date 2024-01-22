@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lemon&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/58c2c0b06e.js" crossorigin="anonymous"></script>
+    {%block head%}{%endblock%}
+    <title>Pirogram</title>    
+</head>
+<body>
+    <header>
+        <div class="header_content">
+            <div class="header_title">Pirogram</div>
+            {% if user.is_authenticated %}
+            <nav>
+                <a href="{%url 'posts:create'%}"><i class="fa-regular fa-square-plus"></i></a>
+                <a href="{%url 'users:logout'%}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            </nav>
+            {% else %}
+            <div class="login_box">
+                <a href="{%url 'users:login'%}">로그인하기</a>
+                <a href="{%url 'users:signup'%}">가입하기</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="content_wrapper">
+        {%block content%}{%endblock%}
+    </div>
+    {%block extra%}{%endblock%}
+</body>
+</html>
