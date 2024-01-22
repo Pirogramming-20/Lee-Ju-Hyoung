@@ -7,7 +7,7 @@
 {%block content%}
 <div class="post_list">
 {% for post in posts%}
-<div class="post_content post-id-{{ post.id }}">
+<div class="post_content_box post-id-{{ post.id }}">
     <div class="post_user">
         <i class="fa-solid fa-user"></i>
         <div class="post_writer">{{post.user.nickname}}</div>
@@ -20,21 +20,30 @@
             {% else %}
             <i class="fa-regular fa-heart"></i>
             {% endif %}
-            <i class="fa-regular fa-comment" onclick="showCommentForm()"></i>
+            <i class="fa-regular fa-comment"></i>
         </div>
-        <i class="fa-regular fa-bookmark"></i>
+        <i class="fa-regular fa-bookmark" id="addCommentBtn"></i>
     </div>
     <div class="post_like">좋아요 : <span class="like-count">{{ post.like }}</span>개</div>
     <div class="post_content">{{ post.content }}</div>
     <div class="comment_list">
+        
         {% for comment in post.comments.all %}
                 <div class="post_comments">
                     <div class="comment_writer">{{ comment.user.nickname }}</div>
-                    <div class="comment_content">{{ comment.content }}</div>
+                    <div id="commentList-{{ post.id }}"></div>
                 </div>
-            {% endfor %}
-        <div class="comment_create"></div>
+        {% endfor %}
+        
     </div>  
+    
+
+    <div class="comment_create">
+        <input type="text" id="commentInput-{{ post.id }}" placeholder="댓글을 입력하세요">
+        <button onclick="SubmitComment({{ post.id }})">댓글 작성</button>
+    </div>
+
+    
 </div>
 {% endfor %}
 </div>
@@ -77,6 +86,71 @@
             }
         }
     }
+
+    //댓글 관련
+    const requestComment = new XMLHttpRequest();
+    const SubmitComment = (id) => {
+        const url = "comment/";
+        const commentInput = document.getElementById(`commentInput-${id}`).value;
+        requestComment.open("POST", url, true);
+        requestComment.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        requestComment.onreadystatechange = () => {
+            if (requestComment.readyState === XMLHttpRequest.DONE) {
+                if (requestComment.status < 400) {
+                    console.log("댓글이 등록되었습니다.");
+                    getComments(id);
+                } else {
+                    console.error("댓글 등록에 실패했습니다.");
+                }
+            }
+        };
+        requestComment.send(JSON.stringify({id:id, comment: commentInput}))
+    }
+
+    const getComments = (postId) => {
+        const commentListContainer = document.getElementById(`commentList-${postId}`);
+        const url = `get_comments/${postId}/`;
+    
+        const requestComments = new XMLHttpRequest();
+        requestComments.open("GET", url, true);
+        requestComments.onreadystatechange = () => {
+            if (requestComments.readyState === XMLHttpRequest.DONE) {
+                if (requestComments.status < 400) {
+                    const comments = JSON.parse(requestComments.response);
+                    commentListContainer.innerHTML = comments.map(comment => `
+                        <p>${comment.content} 
+                            <button onclick="onDeleteComment(${postId}, ${comment.id})">삭제</button>
+                        </p>`).join('');
+                }
+            }
+        };
+        requestComments.send();
+    };
+    const onDeleteComment = (postId, commentId) => {
+        const url = `delete_comment/${postId}/${commentId}/`;
+
+        const requestDeleteComment = new XMLHttpRequest();
+        requestDeleteComment.open("POST", url, true);
+        requestDeleteComment.onreadystatechange = () => {
+            if (requestDeleteComment.readyState === XMLHttpRequest.DONE) {
+                if (requestDeleteComment.status < 400) {
+                    console.log("댓글이 삭제되었습니다.");
+                    getComments(postId);
+                } else {
+                    console.error("댓글 삭제에 실패했습니다.");
+                }
+            }
+        };
+        requestDeleteComment.send();
+    };
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        {% for post in posts %}
+            getComments({{ post.id }});
+        {% endfor %}
+    });
+
 
 </script>
 {%endblock%}
